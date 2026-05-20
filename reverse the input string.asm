@@ -11,24 +11,24 @@ ExitProcess proto, dwExitCode:dword
 .data
 prompt1  BYTE "Input a string which containing between 1 and 50 characters",0
 prompt2  BYTE "The reverse string is:",0
-aName    BYTE 51 DUP(0)    ; Àx¦s¨Ï¥ÎªÌ¿é¤J¦r¦ê
-nameSize DWORD ?            ; ¹ê»Úªø«×
+aName    BYTE 51 DUP(0)    ; å„²å­˜ä½¿ç”¨è€…è¼¸å…¥å­—ä¸²
+nameSize DWORD ?            ; å¯¦éš›é•·åº¦
 
 .code
 main PROC
 
-    ; Åã¥Ü´£¥Ü°T®§
+    ; é¡¯ç¤ºæç¤ºè¨Šæ¯
     mov  edx, OFFSET prompt1
     call WriteString
     call Crlf
 
-    ; Åª¤J¨Ï¥ÎªÌ¦r¦ê
+    ; è®€å…¥ä½¿ç”¨è€…å­—ä¸²
     mov  edx, OFFSET aName
     mov  ecx, 50
-    call ReadString          ; ¿é¤J¨ì aName
-    mov  nameSize, eax       ; eax = ¿é¤J¦r¤¸¼Æ
+    call ReadString          ; è¼¸å…¥åˆ° aName
+    mov  nameSize, eax       ; eax = è¼¸å…¥å­—å…ƒæ•¸
 
-    ; push ¨C­Ó¦r¤¸¶i stack
+    ; push æ¯å€‹å­—å…ƒé€² stack
     mov  ecx, nameSize
     mov  esi, OFFSET aName
 
@@ -38,13 +38,13 @@ L1:
     inc  esi
     loop L1
 
-    ; Åã¥Üµ²ªG¼ĞÃD
+    ; é¡¯ç¤ºçµæœæ¨™é¡Œ
     call Crlf
     mov  edx, OFFSET prompt2
     call WriteString
     call Crlf
 
-    ; pop ¥X¨Ã¤Ï¦V¦L¥X
+    ; pop å‡ºä¸¦åå‘å°å‡º
     mov  ecx, nameSize
 L2:
     pop eax
